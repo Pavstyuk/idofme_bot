@@ -8,7 +8,7 @@ const {
 
 const bot = new Bot(process.env.BOT_API_KEY);
 
-// КОМАНДЫ БОТА
+// BOT COMMANDS
 
 bot.command('start', async (ctx) => {
     await ctx.reply("I am a simplest bot ever! I show your <b>ID</b> in Telegram", {
@@ -28,7 +28,7 @@ bot.command('about', async (ctx) => {
     });
 });
 
-// МЕНЮ БОТА
+// MENU BOT
 
 bot.api.setMyCommands([{
         command: "start",
@@ -45,7 +45,7 @@ bot.api.setMyCommands([{
 ])
 
 bot.hears(['id', 'ID', 'Id'], async (ctx) => {
-    await ctx.reply(`You ID: <pre>${ctx.from.id}</pre>`, {
+    await ctx.reply(`Your ID: <pre>${ctx.from.id}</pre>`, {
         parse_mode: "HTML"
     });
 });
@@ -57,7 +57,7 @@ bot.on(["message:text", "message:file", "message:media"], async (ctx) => {
 });
 
 
-// ОБРАБОТЧИК ОШИБОК 
+// ERRORS
 bot.catch((err) => {
     const ctx = err.ctx;
     console.error(`Ошибка при обработке обновления ${ctx.update.update_id}:`);
